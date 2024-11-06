@@ -1,0 +1,7 @@
+{
+  "name": "ionic-travel-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
