@@ -1,0 +1,71 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      <ion-text color="primary">Histórico de Viagens</ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Cabeçalho com estatísticas -->
+  <div class="stats-container ion-padding">
+    <ion-card class="stats-card">
+      <ion-card-content>
+        <div class="stat-item">
+          <ion-icon name="airplane" color="primary"></ion-icon>
+          <div class="stat-text">
+            <ion-text color="medium">Total de Viagens</ion-text>
+            <h3>{{ trips.length }}</h3>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Lista de Viagens -->
+  <ion-list class="ion-padding">
+    <ion-item-sliding *ngFor="let trip of trips">
+      <ion-item class="trip-item">
+        <ion-avatar slot="start">
+          <div class="avatar-placeholder">
+            <ion-icon name="airplane-outline" color="primary"></ion-icon>
+          </div>
+        </ion-avatar>
+
+        <ion-label>
+          <h2 class="destination-text">{{ trip.destination }}</h2>
+          <div class="trip-details">
+            <ion-chip class="date-chip" outline color="primary">
+              <ion-icon name="calendar-outline"></ion-icon>
+              <ion-label>{{ trip.date | date:'dd/MM/yyyy' }}</ion-label>
+            </ion-chip>
+            <ion-chip class="passengers-chip" outline color="secondary">
+              <ion-icon name="people-outline"></ion-icon>
+              <ion-label>{{ trip.passengers }} {{ trip.passengers === 1 ? 'passageiro' : 'passageiros' }}</ion-label>
+            </ion-chip>
+          </div>
+        </ion-label>
+
+        <ion-button fill="clear" (click)="showTripDetails(trip)">
+          <ion-icon slot="icon-only" name="chevron-forward-outline" color="medium"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="confirmDelete(trip)">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <!-- Mensagem quando não há viagens -->
+  <div *ngIf="trips.length === 0" class="empty-state ion-padding ion-text-center">
+    <ion-icon name="paper-plane-outline" color="medium" class="empty-icon"></ion-icon>
+    <h3>Nenhuma viagem encontrada</h3>
+    <p>Comece a planejar suas aventuras agora!</p>
+    <ion-button expand="block" fill="outline" routerLink="/schedule-trip">
+      Agendar Nova Viagem
+    </ion-button>
+  </div>
+</ion-content>

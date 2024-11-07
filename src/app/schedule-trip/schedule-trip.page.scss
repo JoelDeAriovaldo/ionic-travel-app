@@ -1,0 +1,85 @@
+/* schedule-trip.page.scss */
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+ion-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 16px 0;
+
+  &.ios {
+    margin: 16px 0;
+  }
+}
+
+.header-content {
+  text-align: center;
+  padding: 16px 0;
+
+  ion-card-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .header-icon {
+    margin-right: 8px;
+    font-size: 24px;
+  }
+
+  p {
+    margin: 8px 0;
+    font-size: 14px;
+  }
+}
+
+ion-item {
+  --border-radius: 8px;
+  --background: var(--ion-color-light);
+  margin: 8px 0;
+
+  &.ios {
+    --background: var(--ion-color-light);
+  }
+
+  ion-icon {
+    margin-right: 8px;
+  }
+}
+
+.submit-button {
+  margin-top: 24px;
+  --border-radius: 8px;
+  height: 48px;
+  font-weight: 600;
+}
+
+// Estilização para modo escuro
+@media (prefers-color-scheme: dark) {
+  ion-item {
+    --background: rgba(var(--ion-color-primary-rgb), 0.1);
+  }
+}
+
+// Animações
+ion-card {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

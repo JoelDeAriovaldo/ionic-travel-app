@@ -1,0 +1,217 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <ion-text color="primary">Minha Agenda</ion-text>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="notifications-outline" color="primary"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="person-circle-outline" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Welcome Section -->
+  <div class="welcome-section ion-padding-bottom">
+    <h1 class="ion-padding-bottom">
+      <ion-text color="dark">Bem-vindo, </ion-text>
+      <ion-text color="primary">Usuário</ion-text>
+    </h1>
+    <ion-button expand="block" color="primary" shape="round" class="main-action-button">
+      <ion-icon name="add-outline" slot="start"></ion-icon>
+      Agendar Nova Viagem
+    </ion-button>
+  </div>
+
+  <!-- Quick Stats -->
+  <ion-grid class="stats-grid">
+    <ion-row>
+      <ion-col size="6">
+        <ion-card class="stat-card">
+          <ion-card-content>
+            <ion-icon name="calendar-outline" color="primary"></ion-icon>
+            <h2>12</h2>
+            <p>Viagens Agendadas</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="stat-card">
+          <ion-card-content>
+            <ion-icon name="time-outline" color="secondary"></ion-icon>
+            <h2>5</h2>
+            <p>Viagens Pendentes</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Feature Cards -->
+  <div class="features-section">
+    <h2 class="section-title ion-padding-bottom">
+      <ion-text color="dark">Serviços Disponíveis</ion-text>
+    </h2>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-md="6" *ngFor="let card of cards">
+          <ion-card class="feature-card">
+            <ion-card-content>
+              <ion-icon [name]="getCardIcon(card.title)" color="primary"></ion-icon>
+              <ion-card-title color="dark">{{ card.title }}</ion-card-title>
+              <ion-text color="medium">
+                <p>{{ card.content }}</p>
+              </ion-text>
+              <ion-button fill="clear" color="primary">
+                Saiba mais
+                <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+              </ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!-- Next Trip -->
+  <ion-card class="next-trip-card">
+    <ion-card-header>
+      <ion-card-subtitle color="primary">Próxima Viagem</ion-card-subtitle>
+      <ion-card-title>Maputo - MZ</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="trip-details">
+        <ion-item lines="none">
+          <ion-icon name="calendar-outline" slot="start" color="primary"></ion-icon>
+          <ion-label>
+            <h3>Data</h3>
+            <p>15 de Novembro, 2024</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon name="people-outline" slot="start" color="primary"></ion-icon>
+          <ion-label>
+            <h3>Passageiros</h3>
+            <p>3 pessoas</p>
+          </ion-label>
+        </ion-item>
+      </div>
+      <ion-button expand="block" fill="clear" color="primary">
+        Ver Detalhes
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<style>
+  .welcome-section {
+    margin-bottom: 20px;
+  }
+
+  .welcome-section h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .main-action-button {
+    --box-shadow: 0 4px 12px rgba(var(--ion-color-primary-rgb), 0.2);
+    margin: 16px 0;
+    height: 48px;
+  }
+
+  .stats-grid {
+    margin-bottom: 24px;
+  }
+
+  .stat-card {
+    margin: 0;
+    text-align: center;
+    --background: var(--ion-card-background);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .stat-card ion-card-content {
+    padding: 16px;
+  }
+
+  .stat-card ion-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .stat-card h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 8px 0;
+    color: var(--ion-text-color);
+  }
+
+  .stat-card p {
+    margin: 0;
+    color: var(--ion-color-medium);
+    font-size: 14px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .feature-card {
+    margin: 0 0 16px 0;
+    --background: var(--ion-card-background);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .feature-card ion-card-content {
+    padding: 20px;
+  }
+
+  .feature-card ion-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .feature-card ion-card-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .feature-card p {
+    margin: 0 0 16px 0;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .next-trip-card {
+    margin: 24px 0;
+    --background: var(--ion-card-background);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .trip-details ion-item {
+    --padding-start: 0;
+  }
+
+  .trip-details ion-icon {
+    margin-right: 8px;
+  }
+
+  /* Dark mode adjustments */
+  @media (prefers-color-scheme: dark) {
+
+    .stat-card,
+    .feature-card,
+    .next-trip-card {
+      --background: rgba(var(--ion-color-primary-rgb), 0.1);
+    }
+  }
+</style>

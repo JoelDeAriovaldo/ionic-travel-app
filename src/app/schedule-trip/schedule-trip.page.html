@@ -1,0 +1,67 @@
+<!-- schedule-trip.page.html -->
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      <ion-text color="primary">Agendar Viagem</ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="form-container">
+    <!-- Card principal -->
+    <ion-card>
+      <ion-card-header>
+        <div class="header-content">
+          <ion-card-title color="primary">
+            <ion-icon name="airplane-outline" class="header-icon"></ion-icon>
+            Nova Viagem
+          </ion-card-title>
+          <ion-text color="medium">
+            <p>Preencha os detalhes da sua próxima aventura</p>
+          </ion-text>
+        </div>
+      </ion-card-header>
+
+      <ion-card-content>
+        <form (ngSubmit)="scheduleTrip()" #tripForm="ngForm">
+          <!-- Destino -->
+          <ion-item class="ion-margin-bottom">
+            <ion-icon name="location-outline" slot="start" color="primary"></ion-icon>
+            <ion-label position="floating">Destino</ion-label>
+            <ion-input [(ngModel)]="trip.destination" name="destination" required placeholder="Para onde você quer ir?"
+              class="ion-padding-start">
+            </ion-input>
+          </ion-item>
+
+          <!-- Data -->
+          <ion-item class="ion-margin-bottom">
+            <ion-icon name="calendar-outline" slot="start" color="primary"></ion-icon>
+            <ion-label position="floating">Data da Viagem</ion-label>
+            <ion-datetime-button datetime="trip-date"></ion-datetime-button>
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime id="trip-date" [(ngModel)]="trip.date" name="date" presentation="date" required>
+                </ion-datetime>
+              </ng-template>
+            </ion-modal>
+          </ion-item>
+
+          <!-- Passageiros -->
+          <ion-item class="ion-margin-bottom">
+            <ion-icon name="people-outline" slot="start" color="primary"></ion-icon>
+            <ion-label position="floating">Número de Passageiros</ion-label>
+            <ion-input type="number" [(ngModel)]="trip.passengers" name="passengers" min="1" max="10" required>
+            </ion-input>
+          </ion-item>
+
+          <!-- Botão de Submit -->
+          <ion-button expand="block" type="submit" class="ion-margin-top submit-button" [disabled]="!tripForm.valid">
+            <ion-icon name="paper-plane-outline" slot="start"></ion-icon>
+            Agendar Viagem
+          </ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,143 @@
+/* trip-history.page.scss */
+.stats-container {
+  margin-bottom: 16px;
+}
+
+.stats-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin: 0;
+
+  .stat-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+
+    ion-icon {
+      font-size: 24px;
+      margin-right: 12px;
+    }
+
+    .stat-text {
+      ion-text {
+        font-size: 14px;
+      }
+
+      h3 {
+        margin: 4px 0 0 0;
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--ion-color-primary);
+      }
+    }
+  }
+}
+
+.trip-item {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  --background: var(--ion-color-light);
+
+  .avatar-placeholder {
+    width: 40px;
+    height: 40px;
+    background: var(--ion-color-primary-contrast);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    ion-icon {
+      font-size: 20px;
+    }
+  }
+
+  .destination-text {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--ion-color-dark);
+  }
+
+  .trip-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+
+    ion-chip {
+      margin: 0;
+      height: 24px;
+      font-size: 12px;
+
+      ion-icon {
+        font-size: 14px;
+        margin-right: 4px;
+      }
+    }
+  }
+}
+
+.empty-state {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+
+  .empty-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--ion-color-dark);
+  }
+
+  p {
+    color: var(--ion-color-medium);
+    margin-bottom: 24px;
+  }
+
+  ion-button {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
+// Animações
+.trip-item {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Modo escuro
+@media (prefers-color-scheme: dark) {
+  .trip-item {
+    --background: rgba(var(--ion-color-primary-rgb), 0.1);
+  }
+
+  .avatar-placeholder {
+    background: rgba(var(--ion-color-primary-rgb), 0.2) !important;
+  }
+}

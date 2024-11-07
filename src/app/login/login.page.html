@@ -1,0 +1,165 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      <ion-text>Bem-vindo</ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="login-container">
+    <!-- Logo e Título -->
+    <div class="ion-padding-vertical ion-text-center">
+      <ion-avatar class="logo-avatar ion-margin-bottom">
+        <img src="assets/logo..png" alt="Logo">
+      </ion-avatar>
+      <h1>
+        <ion-text color="primary">Login</ion-text>
+      </h1>
+    </div>
+
+    <form (ngSubmit)="login()" #loginForm="ngForm" class="ion-margin">
+      <!-- Email Input -->
+      <ion-item class="ion-margin-bottom auth-input">
+        <ion-icon name="mail-outline" slot="start" color="primary"></ion-icon>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input [(ngModel)]="email" name="email" type="email" required email placeholder="seu@email.com"></ion-input>
+      </ion-item>
+      <ion-text color="danger" class="error-message" *ngIf="loginForm.submitted && !loginForm.controls['email']?.valid">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        <span>Por favor, insira um email válido.</span>
+      </ion-text>
+
+      <!-- Password Input -->
+      <ion-item class="ion-margin-bottom auth-input">
+        <ion-icon name="lock-closed-outline" slot="start" color="primary"></ion-icon>
+        <ion-label position="stacked">Senha</ion-label>
+        <ion-input type="password" [(ngModel)]="password" name="password" required minlength="6"
+          placeholder="******"></ion-input>
+      </ion-item>
+      <ion-text color="danger" class="error-message"
+        *ngIf="loginForm.submitted && !loginForm.controls['password']?.valid">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        <span>A senha deve ter pelo menos 6 caracteres.</span>
+      </ion-text>
+
+      <!-- Esqueci minha senha -->
+      <div class="ion-text-end ion-margin-bottom">
+        <ion-button fill="clear" size="small" color="secondary" routerLink="/forgot-password">
+          Esqueceu sua senha?
+        </ion-button>
+      </div>
+
+      <!-- Login Button -->
+      <ion-button expand="block" type="submit" class="ion-margin-top login-button" shape="round">
+        <ion-icon name="log-in-outline" slot="start"></ion-icon>
+        Entrar
+      </ion-button>
+    </form>
+
+    <!-- Divider -->
+    <div class="divider ion-margin-vertical">
+      <ion-text color="medium">ou continue com</ion-text>
+    </div>
+
+    <!-- Social Login -->
+    <!-- <div class="social-buttons ion-padding-horizontal">
+      <ion-button expand="block" fill="outline" class="ion-margin-bottom" shape="round">
+        <ion-icon slot="start" name="logo-google"></ion-icon>
+        Google
+      </ion-button>
+      <ion-button expand="block" fill="outline" color="secondary" shape="round">
+        <ion-icon slot="start" name="logo-facebook"></ion-icon>
+        Facebook
+      </ion-button>
+    </div> -->
+
+    <!-- Register Link -->
+    <div class="ion-text-center ion-padding-vertical">
+      <ion-text color="medium">Ainda não tem uma conta?</ion-text>
+      <ion-button fill="clear" color="secondary" routerLink="/register">
+        Criar Conta
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
+
+<style>
+  .login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+
+  .logo-avatar {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+
+  .auth-input {
+    --background: var(--ion-item-background);
+    --border-radius: 12px;
+    --border-width: 1px;
+    --border-style: solid;
+    --border-color: var(--ion-border-color);
+    margin-bottom: 16px;
+    --padding-start: 12px;
+    --padding-end: 12px;
+    --padding-top: 8px;
+    --padding-bottom: 8px;
+  }
+
+  .auth-input.item-has-focus {
+    --border-color: var(--ion-color-primary);
+  }
+
+  .error-message {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    margin: 4px 0 16px 16px;
+  }
+
+  .error-message ion-icon {
+    margin-right: 4px;
+    font-size: 16px;
+  }
+
+  .login-button {
+    --box-shadow: 0 4px 12px rgba(var(--ion-color-primary-rgb), 0.2);
+    margin: 24px 0;
+    height: 48px;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 24px 0;
+  }
+
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--ion-border-color);
+    margin: 0 16px;
+  }
+
+  .social-buttons ion-button {
+    --border-width: 1px;
+    height: 48px;
+  }
+
+  /* Dark mode specific styles */
+  @media (prefers-color-scheme: dark) {
+    .auth-input {
+      --background: rgba(var(--ion-color-primary-rgb), 0.1);
+    }
+
+    .login-button {
+      --box-shadow: 0 4px 12px rgba(var(--ion-color-primary-rgb), 0.4);
+    }
+  }
+</style>

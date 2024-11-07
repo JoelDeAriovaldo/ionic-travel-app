@@ -1,0 +1,56 @@
+<!-- user-profile.page.html -->
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Perfil do Usuário</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="profile-header ion-padding-bottom">
+    <div class="avatar-container">
+      <ion-avatar class="large-avatar">
+        <img src="assets/avatar-placeholder.png" alt="avatar" />
+      </ion-avatar>
+    </div>
+    <h1 class="ion-text-center profile-name">{{ user.name || 'Seu Perfil' }}</h1>
+  </div>
+
+  <ion-card>
+    <ion-card-content>
+      <form #profileForm="ngForm" (ngSubmit)="saveUser()">
+        <ion-list lines="full">
+          <ion-item>
+            <ion-icon name="person-outline" slot="start" color="primary"></ion-icon>
+            <ion-label position="stacked">Nome</ion-label>
+            <ion-input [(ngModel)]="user.name" name="name" type="text" required placeholder="Digite seu nome">
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon name="mail-outline" slot="start" color="primary"></ion-icon>
+            <ion-label position="stacked">Email</ion-label>
+            <ion-input [(ngModel)]="user.email" name="email" type="email" required placeholder="seu@email.com">
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon name="call-outline" slot="start" color="primary"></ion-icon>
+            <ion-label position="stacked">Telefone</ion-label>
+            <ion-input [(ngModel)]="user.phone" name="phone" type="tel" required placeholder="(00) 00000-0000">
+            </ion-input>
+          </ion-item>
+
+          <div class="ion-padding">
+            <ion-button expand="block" type="submit" [disabled]="!profileForm.form.valid" class="save-button">
+              <ion-icon name="save-outline" slot="start"></ion-icon>
+              Salvar Alterações
+            </ion-button>
+          </div>
+        </ion-list>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
